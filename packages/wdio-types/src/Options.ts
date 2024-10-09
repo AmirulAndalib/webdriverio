@@ -6,9 +6,9 @@ export type SupportedProtocols = 'webdriver' | './protocol-stub.js'
 
 export type Method = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'HEAD' | 'DELETE' | 'OPTIONS' | 'TRACE' | 'get' | 'post' | 'put' | 'patch' | 'head' | 'delete' | 'options' | 'trace'
 
-export interface RequestLibResponse {
+export interface RequestLibResponse<Body = any> {
     statusCode: number
-    body?: any
+    body?: Body
     rawBody?: Buffer
 }
 
@@ -143,7 +143,7 @@ export interface WebDriver extends Connection {
     cacheDir?: string
 }
 
-export type SauceRegions = 'us' | 'eu' | 'apac' | 'us-west-1' | 'us-east-4' | 'eu-central-1' | 'apac-southeast-1' | 'staging'
+export type SauceRegions = 'us' | 'eu' | 'us-west-1' | 'us-east-4' | 'eu-central-1' | 'staging'
 
 export interface WebdriverIO extends WebDriver, Pick<Hooks, 'onReload' | 'beforeCommand' | 'afterCommand'> {
     /**

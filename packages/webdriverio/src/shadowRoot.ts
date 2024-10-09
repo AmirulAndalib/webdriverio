@@ -43,10 +43,11 @@ export class ShadowRootManager {
          * listen on required bidi events
          */
         this.#initialize = this.#browser.sessionSubscribe({
-            events: ['log.entryAdded']
+            events: ['log.entryAdded', 'browsingContext.navigationStarted']
         }).then(() => true, () => false)
         this.#browser.on('log.entryAdded', this.handleLogEntry.bind(this))
         this.#browser.on('result', this.#commandResultHandler.bind(this))
+        this.#browser.on('browsingContext.navigationStarted', this.#handleNavigationStarted.bind(this))
         browser.scriptAddPreloadScript({
             functionDeclaration: customElementWrapper.toString()
         })
@@ -54,6 +55,13 @@ export class ShadowRootManager {
 
     async initialize () {
         return this.#initialize
+    }
+
+    /**
+     * keep track of navigation events and remove shadow roots when they are no longer needed
+     */
+    #handleNavigationStarted (context: local.BrowsingContextNavigationInfo) {
+        this.#shadowRoots.delete(context.context)
     }
 
     /**
@@ -186,7 +194,12 @@ export class ShadowRootManager {
             }
         }
 
-        return tree.getAllLookupScopes()
+        const elements = tree.getAllLookupScopes()
+
+        /**
+         * make sure to send back a unique list of elements
+         */
+        return [...new Set(elements).values()]
     }
 
     getShadowElementPairsByContextId (contextId: string, scope?: string): [string, string | undefined][] {

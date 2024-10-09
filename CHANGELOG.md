@@ -23,6 +23,85 @@ See [CHANGELOG - v8](https://github.com/webdriverio/webdriverio/blob/v8/CHANGELO
 
 ---
 
+## v9.1.3 (2024-10-08)
+
+#### :bug: Bug Fix
+* `wdio-browser-runner`, `wdio-logger`, `webdriverio`
+  * [#13746](https://github.com/webdriverio/webdriverio/pull/13746) fix(webdriverio): make command more compatible with v8 behavior ([@christian-bromann](https://github.com/christian-bromann))
+* `webdriverio`
+  * [#13731](https://github.com/webdriverio/webdriverio/pull/13731) fix(webdriverio): mark mock as being called even without overwrites ([@christian-bromann](https://github.com/christian-bromann))
+  * [#13695](https://github.com/webdriverio/webdriverio/pull/13695) fix(webdriverio): apply script polyfills also for classic sessions ([@christian-bromann](https://github.com/christian-bromann))
+  * [#13730](https://github.com/webdriverio/webdriverio/pull/13730) fix(webdriverio): remove default params in actions ([@lacell75](https://github.com/lacell75))
+  * [#13694](https://github.com/webdriverio/webdriverio/pull/13694) Allow transformation from classic tag name selector to BiDi ([@danielhjacobs](https://github.com/danielhjacobs))
+* `wdio-sauce-service`, `wdio-spec-reporter`
+  * [#13701](https://github.com/webdriverio/webdriverio/pull/13701) fix(@wdio/sauce-service): fix setting annotations ([@christian-bromann](https://github.com/christian-bromann))
+
+#### :nail_care: Polish
+* `webdriverio`
+  * [#13744](https://github.com/webdriverio/webdriverio/pull/13744) chore(webdriverio): provide a better error message if no debuggerAddress is available ([@christian-bromann](https://github.com/christian-bromann))
+* `webdriver`
+  * [#13736](https://github.com/webdriverio/webdriverio/pull/13736) chore(webdriver): add exponential backoff to request retries ([@romainmenke](https://github.com/romainmenke))
+
+#### :house: Internal
+* `wdio-browser-runner`
+  * [#13720](https://github.com/webdriverio/webdriverio/pull/13720) chore(deps): bump the minor-deps-updates-main group with 4 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
+* Other
+  * [#13717](https://github.com/webdriverio/webdriverio/pull/13717) fix(ci) group dependabot PRs by version type ([@BorisOsipov](https://github.com/BorisOsipov))
+
+#### Committers: 5
+- Boris Osipov ([@BorisOsipov](https://github.com/BorisOsipov))
+- Christian Bromann ([@christian-bromann](https://github.com/christian-bromann))
+- Daniel Jacobs ([@danielhjacobs](https://github.com/danielhjacobs))
+- Fabien CELLIER ([@lacell75](https://github.com/lacell75))
+- Romain Menke ([@romainmenke](https://github.com/romainmenke))
+
+
+## v9.1.2 (2024-09-28)
+
+#### :bug: Bug Fix
+* `webdriverio`
+  * [#13669](https://github.com/webdriverio/webdriverio/pull/13669) fix(webdriverio): fix execute command when passing in a string ([@christian-bromann](https://github.com/christian-bromann))
+  * [#13668](https://github.com/webdriverio/webdriverio/pull/13668) fix(webdriverio): fix mock filtering ([@christian-bromann](https://github.com/christian-bromann))
+* `wdio-utils`
+  * [#13665](https://github.com/webdriverio/webdriverio/pull/13665) Reject promise if test is skipped via async method ([@sebastian-sauer](https://github.com/sebastian-sauer))
+
+#### :nail_care: Polish
+* `wdio-types`, `webdriver`
+  * [#13667](https://github.com/webdriverio/webdriverio/pull/13667) chore(webdriver): refactor request/response error handling ([@christian-bromann](https://github.com/christian-bromann))
+* `wdio-cli`, `wdio-sauce-service`, `wdio-spec-reporter`, `wdio-types`, `webdriverio`
+  * [#13666](https://github.com/webdriverio/webdriverio/pull/13666) Removing APAC region ([@diemol](https://github.com/diemol))
+
+#### Committers: 3
+- Christian Bromann ([@christian-bromann](https://github.com/christian-bromann))
+- Diego Molina ([@diemol](https://github.com/diemol))
+- [@sebastian-sauer](https://github.com/sebastian-sauer)
+
+
+## v9.1.1 (2024-09-26)
+
+#### :bug: Bug Fix
+* `webdriver`
+  * [#13660](https://github.com/webdriverio/webdriverio/pull/13660) fix(webdriver): also retry on various error codes ([@christian-bromann](https://github.com/christian-bromann))
+* `webdriverio`
+  * [#13659](https://github.com/webdriverio/webdriverio/pull/13659) fix(webdriverio): better handle context switches ([@christian-bromann](https://github.com/christian-bromann))
+  * [#13657](https://github.com/webdriverio/webdriverio/pull/13657) fix(webdriverio): recognise shadow tree after context reload ([@christian-bromann](https://github.com/christian-bromann))
+* `wdio-junit-reporter`
+  * [#13650](https://github.com/webdriverio/webdriverio/pull/13650) [junit-reporter] compare files ignoring case on win32 ([@sebastian-sauer](https://github.com/sebastian-sauer))
+
+#### :nail_care: Polish
+* `wdio-local-runner`
+  * [#13655](https://github.com/webdriverio/webdriverio/pull/13655) chore: improve log formatting for args ([@alcpereira](https://github.com/alcpereira))
+
+#### :memo: Documentation
+* [#13653](https://github.com/webdriverio/webdriverio/pull/13653) fix(build): website build issue on windows ([@amardeep2006](https://github.com/amardeep2006))
+
+#### Committers: 4
+- Amar Deep Singh ([@amardeep2006](https://github.com/amardeep2006))
+- Christian Bromann ([@christian-bromann](https://github.com/christian-bromann))
+- [@alcpereira](https://github.com/alcpereira)
+- [@sebastian-sauer](https://github.com/sebastian-sauer)
+
+
 ## v9.1.0 (2024-09-24)
 
 #### :rocket: New Feature

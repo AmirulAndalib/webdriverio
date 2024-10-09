@@ -422,4 +422,31 @@ describe('main suite 1', () => {
                 .not.toBe(now.toString())
         })
     })
+
+    describe('shadow root piercing', () => {
+        it('recognises new shadow root ids when page refreshes', async () => {
+            await browser.url('https://todomvc.com/examples/lit/dist/')
+            await expect($('.new-todo')).toBePresent()
+            await browser.refresh()
+            await expect($('.new-todo')).toBePresent()
+        })
+    })
+
+    describe('context management', () => {
+        it('should allow user to switch between contexts', async () => {
+            await browser.url('http://guinea-pig.webdriver.io/')
+
+            await browser.newWindow('https://webdriver.io')
+            await expect($('.hero__subtitle')).toBePresent()
+            await expect($('.red')).not.toBePresent()
+
+            await browser.switchWindow('guinea-pig.webdriver.io')
+            await expect($('.red')).toBePresent()
+            await expect($('.hero__subtitle')).not.toBePresent()
+
+            await browser.switchWindow('Next-gen browser and mobile automation test framework for Node.js')
+            await expect($('.hero__subtitle')).toBePresent()
+            await expect($('.red')).not.toBePresent()
+        })
+    })
 })
