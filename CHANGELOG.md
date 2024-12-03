@@ -23,6 +23,53 @@ See [CHANGELOG - v8](https://github.com/webdriverio/webdriverio/blob/v8/CHANGELO
 
 ---
 
+## v9.4.1 (2024-11-27)
+
+#### :bug: Bug Fix
+* `webdriverio`
+  * [#13925](https://github.com/webdriverio/webdriverio/pull/13925) fix(webdriverio): support types for sync iteration ([@christian-bromann](https://github.com/christian-bromann))
+
+#### Committers: 1
+- Christian Bromann ([@christian-bromann](https://github.com/christian-bromann))
+
+
+## v9.4.0 (2024-11-26)
+
+#### :rocket: New Feature
+* `webdriverio`
+  * [#13914](https://github.com/webdriverio/webdriverio/pull/13914) feat: add pinch and zoom ([@wswebcreation](https://github.com/wswebcreation))
+
+#### :bug: Bug Fix
+* `webdriver`
+  * [#13852](https://github.com/webdriverio/webdriverio/pull/13852) fix(webdriver): use undici for requests in Node.js ([@christian-bromann](https://github.com/christian-bromann))
+
+#### :nail_care: Polish
+* `webdriverio`
+  * [#13916](https://github.com/webdriverio/webdriverio/pull/13916) feat: Add dragAndDrop for Mobile ([@wswebcreation](https://github.com/wswebcreation))
+
+#### Committers: 2
+- Christian Bromann ([@christian-bromann](https://github.com/christian-bromann))
+- Wim Selles ([@wswebcreation](https://github.com/wswebcreation))
+
+
+## v9.3.1 (2024-11-22)
+
+#### :rocket: New Feature
+* `webdriver`, `webdriverio`
+  * [#13905](https://github.com/webdriverio/webdriverio/pull/13905) feat: add two new mobile flags ([@wswebcreation](https://github.com/wswebcreation))
+
+#### :nail_care: Polish
+* `wdio-cucumber-framework`
+  * [#13910](https://github.com/webdriverio/webdriverio/pull/13910) chore(@wdio/cucumber-framework): better re-export all Cucumber primitives ([@christian-bromann](https://github.com/christian-bromann))
+* `webdriverio`
+  * [#13904](https://github.com/webdriverio/webdriverio/pull/13904) propagate addCommand to children for multiremote ([@ccharnkij](https://github.com/ccharnkij))
+
+#### Committers: 3
+- Chanatan Charnkijtawarush ([@ccharnkij](https://github.com/ccharnkij))
+- Christian Bromann ([@christian-bromann](https://github.com/christian-bromann))
+- Wim Selles ([@wswebcreation](https://github.com/wswebcreation))
+
+
 ## v9.3.0 (2024-11-20)
 
 #### :rocket: New Feature
