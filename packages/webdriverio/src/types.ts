@@ -95,6 +95,7 @@ interface AsyncIterators<T> {
 
 export interface ChainablePromiseArray extends AsyncIterators<WebdriverIO.Element> {
     [Symbol.asyncIterator](): AsyncIterableIterator<WebdriverIO.Element>
+    [Symbol.iterator](): IterableIterator<WebdriverIO.Element>
 
     /**
      * Amount of element fetched.
@@ -502,6 +503,11 @@ export type LongPressOptions = {
 export type ClickOptions = LongPressOptions & {
     button: Button | ButtonNames,
     skipRelease: boolean
+}
+
+export type PinchAndZoomOptions = {
+    duration: number
+    scale: number,
 }
 
 export type WaitForOptions = {
