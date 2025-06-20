@@ -49,7 +49,7 @@ export interface Connection {
      */
     path?: string
     /**
-     * Query paramaters that are propagated to the driver server.
+     * Query parameters that are propagated to the driver server.
      */
     queryParams?: {
         [name: string]: string
@@ -139,6 +139,14 @@ export interface WebDriver extends Connection {
      * when attempting to start a session.
      */
     cacheDir?: string
+
+    /**
+     * Mask sensitive data in logs by replacing matching string or all captured groups for the provided regular expressions as string
+     * It replaces the matched string or the capture groups with `**MASKED**`
+     * Useful for masking sensitive data like cloud provider credentials for example with '/--key=([^ ]*)/'
+     * Use comma separated strings to use multiple patterns.
+     */
+    maskingPatterns?: string
 }
 
 export type SauceRegions = 'us' | 'eu' | 'us-west-1' | 'us-east-4' | 'eu-central-1' | 'staging'
@@ -238,6 +246,11 @@ export interface Testrunner extends Hooks, WebdriverIO, WebdriverIO.HookFunction
      * @default __snapshots__ stores snapshot files in __snapshots__ directory next to the test file.
      */
     resolveSnapshotPath?: (testPath: string, snapExtension: string) => string
+    /**
+     * If set to true, soft assertions will be automatically asserted at the end of each test.
+     * @default true
+     */
+    autoAssertOnTestEnd?: boolean
     /**
      * The number of retry attempts for an entire specfile when it fails as a whole.
      */

@@ -5,7 +5,7 @@ import logger from '@wdio/logger'
 import { initializeWorkerService, initializePlugin, executeHooksWithArgs } from '@wdio/utils'
 import { ConfigParser } from '@wdio/config/node'
 import { _setGlobal } from '@wdio/globals'
-import { expect, setOptions, SnapshotService } from 'expect-webdriverio'
+import { expect, setOptions, SnapshotService, SoftAssertionService } from 'expect-webdriverio'
 import { attach } from 'webdriverio'
 import type { Selector } from 'webdriverio'
 import type { Options, Capabilities } from '@wdio/types'
@@ -62,7 +62,12 @@ export default class Runner extends EventEmitter {
 
         this._config = this._configParser.getConfig()
         this._specFileRetryAttempts = (this._config.specFileRetries || 0) - (retries || 0)
+
         logger.setLogLevelsConfig(this._config.logLevels, this._config.logLevel)
+        if (this._config.maskingPatterns) {
+            logger.setMaskingPatterns(this._config.maskingPatterns)
+        }
+
         const capabilities = this._configParser.getCapabilities()
         const isMultiremote = this._isMultiremote = !Array.isArray(capabilities) ||
             (Object.values(caps).length > 0 && Object.values(caps).every(c => typeof c === 'object' && c.capabilities))
@@ -70,12 +75,16 @@ export default class Runner extends EventEmitter {
         /**
          * add built-in services
          */
+        const softAssertionService = new SoftAssertionService({
+            autoAssertOnTestEnd: this._config.autoAssertOnTestEnd || true
+        }, this._caps, this._config)
+
         const snapshotService = SnapshotService.initiate({
             updateState: this._config.updateSnapshots,
             resolveSnapshotPath: this._config.resolveSnapshotPath
         })
-        // ToDo(Christian): resolve type incompatibility between v8 and v9
-        this._configParser.addService(snapshotService as any)
+        this._configParser.addService(softAssertionService)
+        this._configParser.addService(snapshotService)
 
         this._caps = this._isMultiremote
             /**

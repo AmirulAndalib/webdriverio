@@ -86,7 +86,7 @@ Default: `null`
 }
 ```
 
-If you’re running web or native tests on mobile devices, `capabilities` differs from the WebDriver protocol. See the [Appium Docs](https://appium.github.io/appium.io/docs/en/writing-running-appium/caps/) for more details.
+If you’re running web or native tests on mobile devices, `capabilities` differs from the WebDriver protocol. See the [Appium Docs](https://appium.io/docs/en/latest/guides/caps/) for more details.
 
 ### logLevel
 
@@ -196,6 +196,23 @@ The path to the root of the cache directory. This directory is used to store all
 
 Type: `String`<br />
 Default: `process.env.WEBDRIVER_CACHE_DIR || os.tmpdir()`
+
+### maskingPatterns
+
+For more secure logging, regular expressions set with `maskingPatterns` can obfuscate sensitive information from the log.
+ - The string format is a regular expression with or without flags (e.g. `/.../i`) and comma-separated for multiple regular expressions.
+ - For more details on masking patterns, see the [Masking Patterns section in the WDIO Logger README](https://github.com/webdriverio/webdriverio/blob/main/packages/wdio-logger/README.md#masking-patterns).
+
+Type: `String`<br />
+Default: `undefined`
+
+**Example:**
+
+```js
+{
+    maskingPatterns: '/--key=([^ ]*)/i,/RESULT (.*)/'
+}
+```
 
 ---
 
@@ -406,6 +423,13 @@ By default, it is set to `false` so logs are printed in real-time.
 
 Type: `Boolean`<br />
 Default: `false`
+
+### autoAssertOnTestEnd
+
+Controls whether WebdriverIO automatically asserts all soft assertions at the end of each test. When set to `true`, any accumulated soft assertions will be automatically checked and cause the test to fail if any assertions failed. When set to `false`, you must manually call the assert method to check soft assertions.
+
+Type: `Boolean`<br />
+Default: `true`
 
 ### services
 
